@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ song.title }} - Music Player</title>
+    <link href="{% static 'style/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'all_audio' %}">Back to List</a>
+        <div class="song-item">
+            <img src="{{ song.cover_image.url }}" alt="{{ song.title }} cover">
+            <h1>{{MEDIAL_ROOT}}</h1>
+            <h1>{{ song.title }}</h1>
+            <p>{{ song.artist }}</p>
+            <audio controls class="audio-player">
+                <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <div class="lyrics">
+                <h2>Lyrics</h2>
+                <p>{{ song.lyrics }}</p>
+            </div>
+            <div class="translation">
+                <h2>Translation</h2>
+                <p>{{ song.translation }}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

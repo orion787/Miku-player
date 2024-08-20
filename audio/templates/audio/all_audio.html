@@ -1,0 +1,37 @@
+{% extends 'audio/layout.html' %}
+{% load static %}
+
+
+{% block header %}
+<link href="{% static 'style/all_audio.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+All songs
+{% endblock %}
+
+{% block content %}
+<header class="header">
+    <div class="header-container">
+        <h1 class="header__title">Miku player</h1>
+    </div>
+</header>
+
+<body>
+    <div class="container">
+        <h1>Music List</h1>
+        <h1><a href="{% url 'song_selector_view' %}">Select Song</a></h1>
+        <div class="song-list">
+            {% for song in songs %}
+            <div class="song-item">
+                <img src="{{ song.cover_image.url }}" alt="{{ song.title }} cover">
+                <h2>{{ song.title }}</h2>
+                <p>{{ song.artist }}</p>
+                <a href="{% url 'song_detail' song.id %}">Listen</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'audio/layout.html' %}
+{% load static %}
+
+
+{% block header %}
+<link href="{% static 'style/selector.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+Song selector
+{% endblock %}
+
+{% block content %}
+<header class="header">
+    <div class="header-container">
+        <div class="header__arrow">
+            <a href="{% url 'all_audio' %}">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </a>
+        </div>
+        <h1 class="header__title">Miku player</h1>
+    </div>
+</header>
+
+<form method="post" action="{% url 'song_selector_action' %}">
+    {% csrf_token %}
+    <div class="song-item" style="margin:auto">
+    {{form.as_p}}
+    <button type="submit">Filter and Sort</button>
+</form>
+<h2>Available:</h2>
+<ul>
+    {% for song in songs %}
+        <li>{{ song.title }} by {{ song.artist }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

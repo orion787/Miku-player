@@ -1,0 +1,89 @@
+@font-face {
+	font-family: 'Roboto';
+	src: url('./Roboto.ttf');
+}
+
+body {
+    background-color: #137A7F;
+    color: #ecf0f1;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.header-container {
+	display: flex;
+	align-items: center;
+	background-color: #8fb8bb;
+    color: #000000;
+}
+.header__title {
+	font-weight: normal;
+	margin: 0 auto;
+	@media (max-width: 370px) {
+		font-size: 25px;
+	}
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1, h2 {
+    color: #87e5cf ;
+}
+
+.song-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.song-item {
+    background-color: #80B5BE;
+    padding: 10px;
+    border-radius: 10px;
+    width: 30%;
+    text-align: center;
+}
+
+.song-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.song-item h2 {
+    margin: 15px 0;
+}
+
+.audio-player {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.lyrics, .translation {
+    background-color: #87e5cf;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    white-space: pre-wrap;
+}
+
+a {
+    color: #7acbdc;
+    text-decoration: none;
+}
+
+
+.song-list a {
+    color: #47DFD3;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+

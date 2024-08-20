@@ -1,0 +1,63 @@
+{% extends 'audio/song_player_base.html' %}
+
+{% block content %}
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="header__arrow">
+                <a href="{% url 'all_audio' %}">
+                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                </a>
+            </div>
+            <h1 class="header__title">Miku player</h1>
+        </div>
+    </header>
+    <main>
+        <section class="player">
+            <div class="player-container">
+                <div class="player-wrapper">
+                    <img src="{{ song.cover_image.url }}" alt="{{ song.title }} cover" class="player__thumbnail" />
+                    <h2 class="player__description">
+                        {{song.title}} by
+                        <span class="player__description_highlighted">{{song.artist}}</span>
+                        <div class="tooltip">
+                            <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+                            <span class="tooltiptext">Показать текст</span>
+                        </div>
+                    </h2>
+                    <div class="player-controls">
+                        <button class="play-pause-btn"><i class="fa fa-play"></i></button>
+                        <button class="prev-btn"><i class="fa fa-backward"></i></button>
+                        <button class="next-btn"><i class="fa fa-forward"></i></button>
+                        <button class="autoplay-btn"><i class="fa fa-repeat"></i></button>
+
+                        <div class="progress-container">
+                            <input type="range" class="progress-bar" value="0" max="100" />
+                        </div>
+
+                        <div class="volume-container">
+                            <i class="fa fa-volume-up"></i>
+                            <input type="range" class="volume-bar" value="100" max="100" />
+                        </div>
+                    </div>
+                    <audio class="audio" src="{{ song.audio_file.url }}"></audio>
+                </div>
+                <div class="player__text"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal">
+        <div class="modal-container">
+            <span class="modal__close">&times;</span>
+            <h3 class="modal__title">Текст</h3>
+            <p class="modal__text">
+                {{ song.lyrics }}
+            </p>
+            <h3 class="modal__title">Перевод</h3>
+            <p class="modal__text">
+                {{ song.translation }}
+            </p>
+        </div>
+    </div>
+{% endblock %}
